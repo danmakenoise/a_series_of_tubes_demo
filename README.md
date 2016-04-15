@@ -2,4 +2,4 @@
 
 [Live Link](http://aseriesoftubes-demo.herokuapp.com/cats)
 
-This is the demo server for A Series of Tubes! More info coming soon.
+This is the demo server for the gem, [A Series of Tubes](http://www.github.com/rake-db-migrate/a_series_of_tubes)! 
