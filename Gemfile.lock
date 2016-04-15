@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    a_series_of_tubes (1.0.0)
+      json
+      rack
+    json (1.8.3)
+    rack (1.6.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  a_series_of_tubes
+
+BUNDLED WITH
+   1.10.6
