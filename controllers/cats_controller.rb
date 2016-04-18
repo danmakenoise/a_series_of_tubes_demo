@@ -1,27 +1,30 @@
 class CatsController < ASeriesOfTubes::TubeController
   def create
-    cat = Cat.new params['cat']
-    save_cat cat
-    flash['success'] = 'Cat Created!'
-    redirect_to '/cats'
+    @cat = Cat.new
+    @cat.name = params['cat']['name']
+    @cat.owner = params['cat']['owner']
+
+    if @cat.name.empty? || @cat.name.nil?
+      flash.now['error'] = 'Name cannot be blank'
+      render :new
+    elsif @cat.owner.empty? || @cat.owner.nil?
+      flash.now['error'] = 'Owner name cannot be blank'
+      render :new
+    else
+      @cat.save
+      @cat.owner.save
+      flash['success'] = 'Cat Created!'
+      redirect_to '/'
+    end
   end
 
   def index
-    @cats = get_cats_from_cookies
+    @cats = Cat.all
+    render :index
   end
 
   def new
     @cat = Cat.new
-  end
-
-  private
-
-  def get_cats_from_cookies
-    session['cats'] ? session['cats'] : []
-  end
-
-  def save_cat cat
-    session['cats'] ||= []
-    session['cats'] << { owner: cat.owner, name: cat.name }
+    render :new
   end
 end

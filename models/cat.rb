@@ -1,9 +1,15 @@
-class Cat
-  attr_reader :name, :owner
+class Cat < ASeriesOfTubes::TubeRecord::SQLObject
+  self.finalize!
 
-  def initialize params=nil
-    params ||= {}
-    @name = params['name']
-    @owner = params['owner']
+  def owner
+    @owner ||= Human.find self.owner_id
+
+    return @owner.name if @owner
+
+    nil
+  end
+
+  def owner= owner_name
+    @owner = Human.new name: owner_name
   end
 end

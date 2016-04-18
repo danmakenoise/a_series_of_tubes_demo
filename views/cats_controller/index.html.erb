@@ -6,7 +6,7 @@
 
 <ul>
   <% @cats.each do |cat| %>
-    <li><%= cat['name'] %> | Owned By: <%= cat['owner'] %></li>
+    <li><%= cat.name %> | Owned By: <%= cat.owner %></li>
   <% end %>
 </ul>
 
