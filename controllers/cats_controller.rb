@@ -27,4 +27,8 @@ class CatsController < ASeriesOfTubes::TubeController
     @cat = Cat.new
     render :new
   end
+
+  def show
+    @cat = Cat.find params['id'].to_i
+  end
 end

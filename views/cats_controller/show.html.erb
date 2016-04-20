@@ -1,0 +1,25 @@
+<style>
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+.success {
+  font-weight: bold;
+  color: green;
+}
+
+.catname {
+  font-size: 18px;
+  font-weight: bold;
+</style>
+
+<h1><%= @cat.name %></h1>
+<ul>
+    <li>Owned By: <%= @cat.owner %></li>
+</ul>
+
+<a href="/cats">Go Back</a>

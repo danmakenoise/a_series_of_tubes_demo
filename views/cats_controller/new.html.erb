@@ -1,5 +1,32 @@
+<style>
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+input[type='submit'] {
+  border: 0;
+  padding: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.error {
+  font-weight: bold;
+  color: red;
+}
+
+input {
+  margin-bottom: 10px;
+  display: block;
+}
+</style>
+<h1>Create a New Cat:</h1>
 <% if flash['error'] %>
-  <p><%= flash['error'] %></p>
+  <p class="error"><%= flash['error'] %></p>
 <% end %>
 
 <form action="/cats" method="POST">

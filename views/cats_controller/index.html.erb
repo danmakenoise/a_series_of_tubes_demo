@@ -1,12 +1,34 @@
-<h1>ALL THE CATS</h1>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+.success {
+  font-weight: bold;
+  color: green;
+}
+
+.catname {
+  font-size: 18px;
+  font-weight: bold;
+</style>
+
+<h1>All Cats in the Database:</h1>
 
 <% if flash['success'] %>
-  <p><%= flash['success'] %></p>
+  <p class='success'><%= flash['success'] %></p>
 <% end %>
 
 <ul>
   <% @cats.each do |cat| %>
-    <li><%= cat.name %> | Owned By: <%= cat.owner %></li>
+    <li>
+      <a href='cats/<%= cat.id %>'>
+        <span class="catname"><%= cat.name %></span>
+      </a> <br /> Owned By: <%= cat.owner %></li>
   <% end %>
 </ul>
 
