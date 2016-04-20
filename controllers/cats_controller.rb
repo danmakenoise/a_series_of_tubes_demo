@@ -1,9 +1,10 @@
+require 'byebug'
+
 class CatsController < ASeriesOfTubes::TubeController
   def create
     @cat = Cat.new
     @cat.name = params['cat']['name']
     @cat.owner = params['cat']['owner']
-
     if @cat.name.empty? || @cat.name.nil?
       flash.now['error'] = 'Name cannot be blank'
       render :new
@@ -12,7 +13,6 @@ class CatsController < ASeriesOfTubes::TubeController
       render :new
     else
       @cat.save
-      @cat.owner.save
       flash['success'] = 'Cat Created!'
       redirect_to '/'
     end
