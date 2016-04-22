@@ -1,35 +1,136 @@
 <style>
+
+body, header, h1, h2, main, section, p, ul, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  box-sizing: inherit;
+  font-size: inherit  ;
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   font-family: sans-serif;
+  background-color: #FCF4D9;
+  color: #FCF4D9;
 }
 
-h1 {
-  font-size: 48px;
+.row {
+  padding: 10px;
 }
 
-.success {
-  font-weight: bold;
-  color: green;
+.centered {
+  text-align: center;
 }
 
-.catname {
-  font-size: 18px;
-  font-weight: bold;
+.navbar {
+  font-size: 24px;
+}
+
+.text--red, .navbar:hover {
+  color: #FF7A5A;
+}
+
+.main:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+.main__title {
+  background-color: #FF7A5A;
+  font-size: 36px;
+}
+
+.main__messages {
+  background-color: #8ED2C9;
+}
+
+.list__item {
+  font-size: 24px;
+  background-color: #FFB85F;
+}
+
+.purple {
+  background-color: #462066;
+}
+
+.list__item:hover {
+  background-color: #FF7A5A;
+}
+
+.link {
+  display: block;
+}
+
+.main__left {
+  width: 33.33%;
+  float: left;
+}
+
+.main__right {
+  width: 66.66%;
+  float: right;
+}
+
+.right__about {
+  margin: 100px;
+}
+
+.about__link {
+  color: #462066;
+}
+
+.about__link:hover {
+  color: #8ED2C9;
+}
+
 </style>
 
-<h1>All Cats in the Database:</h1>
+<header class='navbar purple'>
+  <a class='link row' href='/'>
+    <h1>
+      Cat Database
+    </h1>
+  </a>
+</header>
 
-<% if flash['success'] %>
-  <p class='success'><%= flash['success'] %></p>
-<% end %>
+<main class='main'>
+  <section class='main__left'>
+    <section class='main__title row'>
+      <h2>All Cats:</h2>
+    </section>
 
-<ul>
-  <% @cats.each do |cat| %>
-    <li>
-      <a href='cats/<%= cat.id %>'>
-        <span class="catname"><%= cat.name %></span>
-      </a> <br /> Owned By: <%= cat.owner %></li>
-  <% end %>
-</ul>
+    <% if flash['success'] %>
+      <section class='main__messages row'>
+        <p><%= flash['success'] %></p>
+      </section>
+    <% end %>
 
-<a href="/cats/new">New Cat!</a>
+    <ul>
+      <% @cats.each do |cat| %>
+        <li class='list__item'>
+          <a class='link row' href='cats/<%= cat.id %>'>
+            <%= cat.name %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+  <section class='main__right'>
+    <section class='main__title'>
+      <h2 class='row'>What is this?</h1>
+    </section>
+    <section class='right__about centered row text--red'>
+      <p class='row'>
+        This website is a live example of a Ruby server running on the <a class='about__link' href='http://www.github.com/danmakenoise/a_series_of_tubes'>A Series Of Tubes</a> gem. This gem creates an HTTP request router that engages controllers to handle each aspect of your web application. Controllers can interact with objects that act as wrappers for your back-end SQL database. The cats created here are permanently stored, and viewable to all users.
+      </p>
+      <p class='row'>
+        <a class='about__link' href='http://www.github.com/danmakenoise/a_series_of_tubes'>A Series Of Tubes</a> was created by <a class='about__link' href='http://www.danphillips.io'>Dan Phillips</a>. You can find him on <a class='about__link' href='http://www.github.com/danmakenoise'>Github</a>, or through his <a class='about__link' href='http://www.danphillips.io'>Portfolio</a>.
+      </p>
+    </section>
+  </section >
+</main>
+<a class='link row list__item purple centered' href="/cats/new">Add a New Cat!</a>
