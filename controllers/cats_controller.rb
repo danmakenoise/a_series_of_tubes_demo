@@ -14,7 +14,7 @@ class CatsController < ASeriesOfTubes::TubeController
     else
       @cat.save
       flash['success'] = 'Cat Created!'
-      redirect_to '/'
+      redirect_to "/cats/#{@cat.id}"
     end
   end
 
