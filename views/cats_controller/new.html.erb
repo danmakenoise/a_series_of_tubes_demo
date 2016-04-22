@@ -1,42 +1,112 @@
 <style>
+
+body, header, h1, h2, main, section, p, ul, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  box-sizing: inherit;
+  font-size: inherit  ;
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   font-family: sans-serif;
+  background-color: #FCF4D9;
+  color: #FCF4D9;
 }
 
-h1 {
-  font-size: 48px;
+.row {
+  padding: 10px;
 }
 
-input[type='submit'] {
-  border: 0;
-  padding: 20px;
+.purple {
+  background-color: #462066;
+}
+
+.link {
+  display: block;
+}
+
+.main__messages {
+  color: #FF7A5A;
+}
+
+.navbar {
+  font-size: 24px;
+}
+
+.navbar:hover {
+  color: #FF7A5A;
+}
+
+.main__title {
+  background-color: #FF7A5A;
+  font-size: 36px;
+}
+
+.form__label {
+  color: #FF7A5A;
+  font-size: 24px;
   font-weight: bold;
+}
+
+.form__input {
+  display: block;
+  margin-bottom: 20px;
+  padding: 20px;
+  width: 80%;
+  font-size: 36px;
+  border: 0;
+  color: #462066;
+  outline: 0;
   margin-top: 10px;
 }
 
-.error {
+.form__button {
+  border: 0;
+  width: 80%;
+  background-color: #FF7A5A;
+  padding: 20px;
+  color: #FCF4D9;
   font-weight: bold;
-  color: red;
+  font-size: 24px;
+  cursor: pointer;
 }
 
-input {
-  margin-bottom: 10px;
-  display: block;
+.form__button:hover {
+  background-color: #462066;
 }
+
 </style>
-<h1>Create a New Cat:</h1>
+
+<header class='navbar purple'>
+  <a class='link row' href='/'>
+    <h1>
+      Cat Database
+    </h1>
+  </a>
+</header>
+
+<section class='main__title row'>
+  <h2>Create A New Cat:</h2>
+</section>
+
 <% if flash['error'] %>
-  <p class="error"><%= flash['error'] %></p>
+  <section class='main__messages row'>
+    <p><%= flash['error'] %></p>
+  </section>
 <% end %>
 
-<form action="/cats" method="POST">
-  <label>Name
-    <input type="text" name="cat[name]" value="<%= @cat.name %>">
+<form class='form row' action="/cats" method="POST">
+  <label class='form__label'>Name:
+    <input class='form__input' type="text" name="cat[name]" value="<%= @cat.name %>">
   </label>
 
-  <label>Owner
-    <input type="text" name="cat[owner]" value="<%= @cat.owner %>">
+  <label class='form__label'>Owner:
+    <input class='form__input' type="text" name="cat[owner]" value="<%= @cat.owner %>">
   </label>
 
-  <input type="submit">
+  <input class='form__button' type="submit">
 </form>
