@@ -1,25 +1,117 @@
 <style>
+
+body, header, h1, h2, main, section, p, ul, a {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  box-sizing: inherit;
+  font-size: inherit  ;
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   font-family: sans-serif;
+  background-color: #FCF4D9;
+  color: #FCF4D9;
 }
 
-h1 {
-  font-size: 48px;
+.row {
+  padding: 10px;
 }
 
-.success {
-  font-weight: bold;
-  color: green;
+.centered {
+  text-align: center;
 }
 
-.catname {
-  font-size: 18px;
-  font-weight: bold;
+.navbar {
+  font-size: 24px;
+}
+
+.text--red, .navbar:hover {
+  color: #FF7A5A;
+}
+
+.main:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+.main__title {
+  background-color: #FF7A5A;
+  font-size: 36px;
+}
+
+.main__messages {
+  background-color: #8ED2C9;
+}
+
+.list__item {
+  font-size: 24px;
+  padding: 10px;
+  background-color: #FFB85F;
+}
+
+.purple {
+  background-color: #462066;
+}
+
+.link {
+  display: block;
+}
+
+.main__left {
+  width: 33.33%;
+  float: left;
+}
+
+.main__right {
+  width: 66.66%;
+  float: right;
+}
+
+.right__about {
+  margin: 100px;
+}
+
+.about__link {
+  color: #462066;
+}
+
+.about__link:hover {
+  color: #8ED2C9;
+}
+
+.link--back {
+  font-size: 24px;
+}
+
+.link--back:hover {
+  background-color: #FF7A5A;
+}
 </style>
 
-<h1><%= @cat.name %></h1>
+<header class='navbar purple'>
+  <a class='link row' href='/'>
+    <h1>
+      Cat Database
+    </h1>
+  </a>
+</header>
+
+<section class='main__title row'>
+  <h2><%= @cat.name %></h2>
+</section>
+
 <ul>
-    <li>Owned By: <%= @cat.owner %></li>
+  <li class='list__item'>
+    Name: <%= @cat.name %>
+  </li>
+  <li class='list__item'>
+    Owner: <%= @cat.owner %>
+  </li>
 </ul>
 
-<a href="/cats">Go Back</a>
+<a class='link row link--back purple centered' href="/">Go Back!</a>
